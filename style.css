@@ -1,0 +1,46 @@
+body {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(68, 109, 145);
+    /* background: url(https://mcdn.wallpapersafari.com/medium/83/4/ixjl8D.jpg);*/
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+header{  
+}
+h1.title{
+    text-align:center;
+    color:chartreuse;
+    
+}
+
+#message {
+    text-align: center;
+    color: rgb(184, 18, 210);
+    margin: 2em;
+}
+
+section.board {
+    display: grid;
+    justify-content: center;
+    grid-template-rows: repeat(4, 20vmin);
+    grid-template-columns: repeat(5, 14vmin);
+    grid-gap: 4vmin;
+    margin: auto;
+}
+
+div.cards {
+    border: 3px solid black;
+    font-size: 8vmin;
+    text-align: center;
+    vertical-align: middle;
+    background: orange;
+}
+
+div.button{
+    width: auto;
+    height: 25px;
+    margin: 20px auto;
+}

@@ -1,7 +1,7 @@
 body {
     height: 100vh;
     /* display: flex; */
-    
+    font-family: 'Shojumaru', cursive;
     background-color: rgb(68, 109, 145);
 }
 
@@ -18,7 +18,7 @@ h1.title{
 
 #message {
     text-align: center;
-    color: rgb(184, 18, 210);
+    color: rgb(235, 235, 235);
     margin: auto;
     padding: auto;
 }
@@ -35,15 +35,13 @@ h1.title{
 
 section.gameboard {
     display: grid;
-    grid-template-rows: repeat(4, 20vmin);
-    grid-template-columns: repeat(5, 1fr);
-    /* grid-template-rows: repeat(4, minmax(160px, 1fr));
-    grid-template-columns: repeat(5, minmax(160px, 1fr)); */
-    height: auto;
-    width: auto;
-    grid-gap: 4vmin;
-    margin: auto;
-    padding: 5px;
+    display: grid;
+    justify-content: center;
+    grid-template-rows: repeat(4, 12vmin);
+    grid-template-columns: repeat(5, 12vmin);
+    grid-gap: 2vmin;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 /* .gameboard:before {
@@ -63,11 +61,11 @@ div.cards {
     background: orange;
     border-radius: 10px;
 }
-.cards:hover{
+/* .cards:hover {
     opacity: 0.1;
     cursor:pointer;
     transition-delay: .2;
-}
+} */
 
 div.button{
     width: auto;

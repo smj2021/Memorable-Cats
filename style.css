@@ -1,46 +1,78 @@
 body {
     height: 100vh;
-    display: flex;
-    flex-direction: column;
+    /* display: flex; */
+    
     background-color: rgb(68, 109, 145);
-    /* background: url(https://mcdn.wallpapersafari.com/medium/83/4/ixjl8D.jpg);*/
-    background-size: cover;
-    background-repeat: no-repeat;
 }
 
-header{  
-}
+/* header{
+
+} */
+
 h1.title{
     text-align:center;
     color:chartreuse;
+    padding: 0em;
     
 }
 
 #message {
     text-align: center;
     color: rgb(184, 18, 210);
-    margin: 2em;
+    margin: auto;
+    padding: auto;
 }
 
-section.board {
-    display: grid;
-    justify-content: center;
-    grid-template-rows: repeat(4, 20vmin);
-    grid-template-columns: repeat(5, 14vmin);
-    grid-gap: 4vmin;
+#timer-stopwatch-container{
     margin: auto;
 }
+
+#countdown{
+    text-align: center;
+    font-size: 2em;
+    margin-block-start: auto;
+}
+
+section.gameboard {
+    display: grid;
+    grid-template-rows: repeat(4, 20vmin);
+    grid-template-columns: repeat(5, 1fr);
+    /* grid-template-rows: repeat(4, minmax(160px, 1fr));
+    grid-template-columns: repeat(5, minmax(160px, 1fr)); */
+    height: auto;
+    width: auto;
+    grid-gap: 4vmin;
+    margin: auto;
+    padding: 5px;
+}
+
+/* .gameboard:before {
+  display: block;
+  height: 0;
+  width: 0;
+  padding-bottom: calc(9/16 * 100%);
+} */
 
 div.cards {
     border: 3px solid black;
     font-size: 8vmin;
+    height: auto;
+    width: auto;
     text-align: center;
     vertical-align: middle;
     background: orange;
+    border-radius: 10px;
+}
+.cards:hover{
+    opacity: 0.1;
+    cursor:pointer;
+    transition-delay: .2;
 }
 
 div.button{
     width: auto;
     height: 25px;
-    margin: 20px auto;
+    margin: 25px;
+    text-align: center;
+    padding-bottom: 50px;
 }

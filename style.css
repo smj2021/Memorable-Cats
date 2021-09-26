@@ -6,7 +6,7 @@ body {
 }
 
 header{
-    margin: 5px;
+    margin-bottom: 0px;
 } 
 
 h1.title{
@@ -48,9 +48,15 @@ section.cardArray {
     width: auto;
     text-align: center;
     vertical-align: middle;
-    background: orange;
-    border-radius: 10px;
+    border-radius: 0px;
 }
+
+/* img{
+    max-width: 100%;
+    max-height: auto;
+    
+} */
+
 /* .cards:hover {
     opacity: 0.1;
     cursor:pointer;
@@ -62,5 +68,4 @@ div.button{
     height: 25px;
     margin: 25px;
     text-align: center;
-    padding-bottom: 50px;
 }

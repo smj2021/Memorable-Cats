@@ -5,9 +5,9 @@ body {
     background-color: rgb(68, 109, 145);
 }
 
-/* header{
-
-} */
+header{
+    margin: 5px;
+} 
 
 h1.title{
     text-align:center;
@@ -24,17 +24,15 @@ h1.title{
     padding: auto;
 }
 
-#timer-stopwatch-container{
+
+
+#timer{
+    text-align: center;
+    font-size: 2em;
     margin: auto;
 }
 
-#countdown{
-    text-align: center;
-    font-size: 2em;
-    margin-block-start: auto;
-}
-
-section#cardArray {
+section.cardArray {
     display: grid;
     justify-content: center;
     grid-template-rows: repeat(4, 14vmin);

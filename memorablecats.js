@@ -87,7 +87,9 @@ function flipCard(){//flip cards on click
     }
 }
 
-function matchCards(){}
+function matchCards(){
+    let cards = this.getAttribute('id');
+}
 
 
     function render() {}

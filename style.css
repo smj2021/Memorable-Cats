@@ -31,11 +31,14 @@ h1.title{
     margin: auto;
 }
 
-section.card-grid {
-    display: flex;
-    flex-wrap: wrap;
-    height: 500px;
-    width: 500px;
+section.cardgrid {
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(4, 10vmin);
+    grid-template-rows: repeat(4, 10vmin);
+    grid-gap: 1vmin;
+    height: auto;
+    width: auto;
 }
 
 .cards {

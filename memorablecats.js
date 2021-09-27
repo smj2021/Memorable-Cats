@@ -88,7 +88,8 @@ function flipCard(){//flip cards on click
 }
 
 function matchCards(){
-    let cards = this.getAttribute('id');
+    let cards = document.querySelectorAll('img');
+    
 }
 
 

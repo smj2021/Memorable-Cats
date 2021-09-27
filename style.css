@@ -5,7 +5,7 @@ body {
 }
 
 header{
-    margin-bottom: 0px;
+    margin-bottom: 30px;
 } 
 
 h1.title{
@@ -22,8 +22,6 @@ h1.title{
     margin: auto;
     padding: auto;
 }
-
-
 
 #timer{
     text-align: center;

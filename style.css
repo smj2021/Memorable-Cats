@@ -1,6 +1,5 @@
 body {
     height: 100vh;
-    /* display: flex; */
     font-family: 'Shojumaru', cursive;
     background-color: rgb(68, 109, 145);
 }
@@ -32,13 +31,11 @@ h1.title{
     margin: auto;
 }
 
-section.cardArray {
-    display: grid;
-    justify-content: center;
-    grid-template-rows: repeat(4, 14vmin);
-    grid-template-columns: repeat(4, 14vmin);
-    grid-gap: 2vmin;
-    margin: 0 auto 0 auto;
+section.card-grid {
+    display: flex;
+    flex-wrap: wrap;
+    height: 500px;
+    width: 500px;
 }
 
 .cards {
@@ -50,18 +47,6 @@ section.cardArray {
     vertical-align: middle;
     border-radius: 0px;
 }
-
-/* img{
-    max-width: 100%;
-    max-height: auto;
-    
-} */
-
-/* .cards:hover {
-    opacity: 0.1;
-    cursor:pointer;
-    transition-delay: .2;
-} */
 
 div.button{
     width: auto;

@@ -22,32 +22,33 @@ const cardGridEl = document.querySelector('.cardgrid');//grabs the div container
 const messageEl = document.getElementById('message');
 const cardsEl = document.querySelectorAll('.cards');
 //const cardEl = document.querySelector('cards');
-
+const resetBtn = document.querySelector('#reset-button');
 
 //-------EVENT LISTENERS-------//
 // cardEl.addEventListener('click', flipCard);
+resetBtn.addEventListener('click', init);
 
 
 
 
 
 //-------FUNCTI0NS-------//
-// init();
+init();
 
 
-// function init() {
-//     playerChoices = [];
-//     playerChoicesIden = [];
-//     matchedCards = [];//Card matches will push into this array and when it fills
-//     messageEl.innerText = "Click a card to pick a card and start the timer!";
-//     for (let i = 0; i < cardArray.length; i++) {
-//         const cardEl = document.createElement('img');
-//         cardEl.setAttribute('src', 'images/Sheep.png');//shows "back" of card
-//         cardEl.setAttribute('id', i);//assigns index positions to each card in the array
-//         cardEl.addEventListener('click', flipCard);//add an event listener to watch for click
-//         cardGridEl.appendChild(cardEl);
-//     }
-// }
+function init() {
+    playerChoices = [];
+    playerChoicesIden = [];
+    matchedCards = [];//Card matches will push into this array and when it fills
+    messageEl.innerText = "Click a card to pick a card and start the timer!";
+    // for (let i = 0; i < cardArray.length; i++) {
+    //     const cardEl = document.createElement('img');
+    //     cardEl.setAttribute('src', 'images/Sheep.png');//shows "back" of card
+    //     cardEl.setAttribute('id', i);//assigns index positions to each card in the array
+    //     cardEl.addEventListener('click', flipCard);//add an event listener to watch for click
+    //     cardGridEl.appendChild(cardEl);
+    // }
+}
 
 
 // function flipCard(event) {//flip cards on click
@@ -76,4 +77,4 @@ const cardsEl = document.querySelectorAll('.cards');
 //     }
 // }
 
-function render() { }
+// function render() {}

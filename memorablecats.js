@@ -1,5 +1,22 @@
 //-------CONSTANTS-------//
-let cardArray = [];
+let cardArray = [
+    { name: '', img: 'IMG_1.JPG' },
+    { name: '', img: 'IMG_1.JPG' },
+    { name: '', img: 'IMG_2.JPG' },
+    { name: '', img: 'IMG_2.JPG' },
+    { name: '', img: 'IMG_3.JPG' },
+    { name: '', img: 'IMG_3.JPG' },
+    { name: '', img: 'IMG_4.JPG' },
+    { name: '', img: 'IMG_4.JPG' },
+    { name: '', img: 'IMG_5.JPG' },
+    { name: '', img: 'IMG_5.JPG' },
+    { name: '', img: 'IMG_6.JPG' },
+    { name: '', img: 'IMG_6.JPG' },
+    { name: '', img: 'IMG_7.JPG' },
+    { name: '', img: 'IMG_7.JPG' },
+    { name: '', img: 'IMG_8.JPG' },
+    { name: '', img: 'IMG_8.JPG' }
+];
 // let winConditions = [[], [], [], [], [], [], [], []];//Contains the pairs of matching cards to compare the playerChoices against in the isWinner function.
 
 
@@ -16,8 +33,8 @@ let matchCombos = [
     ['IMG_7.JPG', 'IMG_7.JPG'],
     ['IMG_8.JPG', 'IMG_8.JPG']
 ];
-let firstChoice;//First card chosen by a player
-let secondChoice;//Second card chosen by a player
+let firstCard;//First card chosen by a player
+let secondCard;//Second card chosen by a player
 
 //-------CACHED ELEMENT REFERENCES-------//
 const cardGridEl = document.querySelectorAll('.cardgrid');//grabs the div container that will hold the cards
@@ -25,7 +42,7 @@ const cardGridSectionEl = document.querySelector('#cardgrid');
 const messageEl = document.getElementById('message');
 const cardsEl = document.querySelectorAll('.cards');
 const resetBtn = document.querySelector('#reset-button');
-
+const timerEl = document.getElementById('timer');
 //-------EVENT LISTENERS-------//
 // cardEl.addEventListener('click', flipCard);
 resetBtn.addEventListener('click', init);
@@ -67,20 +84,26 @@ function createAndAppendCardEls(idValue, imgNum) {
     div.appendChild(frontImage);
     div.appendChild(backImage);
     cardGridSectionEl.appendChild(div);
-    console.log(cardGridSectionEl);
+    // console.log(cardGridSectionEl);
 }
 
 function createBoard() {
     let counter = 0;//counter starts at 1 and every even loop increments.
-    for (let i = 0; i < 16; i++) {
-        console.log(counter);
+    for (let i = 0; i < cardArray.length; i++) {
+        //console.log(counter);
         if (i % 2 === 0) counter++;
         createAndAppendCardEls(i, counter);
     }
-    console.log('hi')
+    // console.log('hi');
 }
 
+function cardClick() { //reveal card underneath on click
+    let cardId = this.getAttribute('data-id');
+    playerChoices.push(matchCombos[cardId]);
+    playerChoicesId.push(cardId);
+    console.log(playerChoices);
 
+}
 
 
 

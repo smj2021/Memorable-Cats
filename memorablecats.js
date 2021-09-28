@@ -78,18 +78,17 @@ function createAndAppendCardEls(idValue, imgNum) {
     let div = document.createElement('div');
     div.setAttribute('id', idValue);
     div.setAttribute('class', 'cards');
+    div.setAttribute('name', `cat_${imgNum}`);
     let frontImage = document.createElement('img');
     frontImage.setAttribute('src', `images/IMG_${imgNum}.JPG`);
     frontImage.setAttribute('class', 'front');
+    frontImage.setAttribute('name', `cat_${imgNum}`);
     let backImage = document.createElement('img');
     backImage.setAttribute('src', 'images/Sheep.png');
     backImage.setAttribute('class', 'back');
     div.appendChild(frontImage);
     div.appendChild(backImage);
     cardGridSectionEl.appendChild(div);
-    for (i=0; i <= 16; i++ ){
-        
-    }
     // console.log(cardGridSectionEl);
 }
 
@@ -104,16 +103,24 @@ function createBoard() {
 }
 
 function handleClick(e) { 
-    console.log(e.target.parentNode);
+    // console.log(e.target.parentNode);
     e.target.parentNode.classList.add('active');
-    firstCard = e.target.parentNode;
-    // secondCard = //
-    // if (){}
-    //reveal card underneath on click
-    // const clickEl = e.target;
-    // console.log(e);
-    // const clickedElIdx = clickEl.id;
-    // console.log(clickedElIdx.id);
+    playerChoices = [];
+    playerChoices.push(e.target.parentNode.firstChild['name']);
+    console.log(playerChoices);
+    // firstCard = e.target.parentNode;
+    // playerChoices.push(firstCard.id);
+    // console.log(firstCard);
+    // if (playerChoices.length = 2){
+    //     cardMatchCheck();
+    // }
+    // // console.log(playerChoices);
+    // if ()
+    // secondCard = e.target.parentNode;
+    // playerChoices.push(secondCard.id);
+    // console.log(playerChoices);
+    // if (){}//counter to turn off eventlistener
+    
 
     // cardId = this.getAttribute('data-id');
     // playerChoices.push(cardArray[cardId]);

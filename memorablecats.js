@@ -1,21 +1,21 @@
 //-------CONSTANTS-------//
 let cardArray = [
-    { name: '', img: 'IMG_1.JPG' },
-    { name: '', img: 'IMG_1.JPG' },
-    { name: '', img: 'IMG_2.JPG' },
-    { name: '', img: 'IMG_2.JPG' },
-    { name: '', img: 'IMG_3.JPG' },
-    { name: '', img: 'IMG_3.JPG' },
-    { name: '', img: 'IMG_4.JPG' },
-    { name: '', img: 'IMG_4.JPG' },
-    { name: '', img: 'IMG_5.JPG' },
-    { name: '', img: 'IMG_5.JPG' },
-    { name: '', img: 'IMG_6.JPG' },
-    { name: '', img: 'IMG_6.JPG' },
-    { name: '', img: 'IMG_7.JPG' },
-    { name: '', img: 'IMG_7.JPG' },
-    { name: '', img: 'IMG_8.JPG' },
-    { name: '', img: 'IMG_8.JPG' }
+    { name: '0', img: 'images/IMG_1.JPG' },
+    { name: '0', img: 'images/IMG_1.JPG' },
+    { name: '1', img: 'images/IMG_2.JPG' },
+    { name: '1', img: 'images/IMG_2.JPG' },
+    { name: '2', img: 'images/IMG_3.JPG' },
+    { name: '2', img: 'images/IMG_3.JPG' },
+    { name: '3', img: 'images/IMG_4.JPG' },
+    { name: '3', img: 'images/IMG_4.JPG' },
+    { name: '4', img: 'images/IMG_5.JPG' },
+    { name: '4', img: 'images/IMG_5.JPG' },
+    { name: '5', img: 'images/IMG_6.JPG' },
+    { name: '5', img: 'images/IMG_6.JPG' },
+    { name: '6', img: 'images/IMG_7.JPG' },
+    { name: '6', img: 'images/IMG_7.JPG' },
+    { name: '7', img: 'images/IMG_8.JPG' },
+    { name: '7', img: 'images/IMG_8.JPG' }
 ];
 // let winConditions = [[], [], [], [], [], [], [], []];//Contains the pairs of matching cards to compare the playerChoices against in the isWinner function.
 
@@ -35,16 +35,17 @@ let matchCombos = [
 ];
 let firstCard;//First card chosen by a player
 let secondCard;//Second card chosen by a player
+let cardId;
 
 //-------CACHED ELEMENT REFERENCES-------//
 const cardGridEl = document.querySelectorAll('.cardgrid');//grabs the div container that will hold the cards
 const cardGridSectionEl = document.querySelector('#cardgrid');
 const messageEl = document.getElementById('message');
-const cardsEl = document.querySelectorAll('.cards');
+const cardEl = document.querySelectorAll('.cards');
 const resetBtn = document.querySelector('#reset-button');
 const timerEl = document.getElementById('timer');
 //-------EVENT LISTENERS-------//
-// cardEl.addEventListener('click', flipCard);
+cardGridSectionEl.addEventListener('click', handleClick);
 resetBtn.addEventListener('click', init);
 // cardsEl.addEventListener('click', startGame);
 
@@ -97,16 +98,25 @@ function createBoard() {
     // console.log('hi');
 }
 
-function cardClick() { //reveal card underneath on click
-    let cardId = this.getAttribute('data-id');
-    playerChoices.push(matchCombos[cardId]);
+function handleClick(event) { //reveal card underneath on click
+    cardId = event.getAttribute('data-id');
+    playerChoices.push(cardArray[cardId]);
     playerChoicesId.push(cardId);
+    this.setAttribute('src', cardArray[cardId].name);
+    if (playerChoices.length === 2) {
+        cardMatchCheck();
+    }
     console.log(playerChoices);
 
 }
 
-
-
+function cardMatchCheck() {
+    firstCard = [];
+    secondCard = [];
+    if (firstCard[i] === secondCard[i]) {
+        
+    }
+}
 
 
 // 
@@ -119,7 +129,7 @@ function cardClick() { //reveal card underneath on click
 //     playerChoicesIden.push(cardIden);
 //     this.setAttribute('src', cardArray[cardIden].img);
 //     if (playerChoices.length === 2) {
-//         setTimeout(matchCards, 500);
+//         setTimeout(matchCards, 1000);
 //     }
 // }
 

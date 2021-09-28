@@ -39,11 +39,14 @@ let secondCard;//Second card chosen by a player
 
 //-------CACHED ELEMENT REFERENCES-------//
 const cardGridEl = document.querySelectorAll('.grid');//grabs the section container that will hold the cards
-const cardGridSectionEl = document.querySelector('#cardgrid');//grabs the container holding the cards
+const cardGridSectionEl = document.querySelector('#cardgrid');
+//grabs the container holding the cards
 const messageEl = document.getElementById('message');
-//const cardsEl = document.querySelectorAll('.cards');//grabs all divs for each card
+const cardsEl = document.querySelectorAll('.cards');//grabs all divs for each card
 const resetBtn = document.querySelector('#reset-button');//grabs the reset button
 const timerEl = document.getElementById('timer');
+
+
 //-------EVENT LISTENERS-------//
 cardGridSectionEl.addEventListener('click', handleClick);
 resetBtn.addEventListener('click', init);
@@ -75,7 +78,6 @@ function createAndAppendCardEls(idValue, imgNum) {
     let div = document.createElement('div');
     div.setAttribute('id', idValue);
     div.setAttribute('class', 'cards');
-
     let frontImage = document.createElement('img');
     frontImage.setAttribute('src', `images/IMG_${imgNum}.JPG`);
     frontImage.setAttribute('class', 'front');
@@ -85,8 +87,9 @@ function createAndAppendCardEls(idValue, imgNum) {
     div.appendChild(frontImage);
     div.appendChild(backImage);
     cardGridSectionEl.appendChild(div);
-    //for (i=1; i <= 16; i++ ){
-    // }
+    for (i=0; i <= 16; i++ ){
+        
+    }
     // console.log(cardGridSectionEl);
 }
 
@@ -100,11 +103,17 @@ function createBoard() {
     }
 }
 
-function handleClick(e) { //reveal card underneath on click
-    const clickEl = e.target;
-    console.log(e);
-    const clickedElIdx = clickEl.id;
-    console.log(clickedElIdx.id);
+function handleClick(e) { 
+    console.log(e.target.parentNode);
+    e.target.parentNode.classList.add('active');
+    firstCard = e.target.parentNode;
+    // secondCard = //
+    // if (){}
+    //reveal card underneath on click
+    // const clickEl = e.target;
+    // console.log(e);
+    // const clickedElIdx = clickEl.id;
+    // console.log(clickedElIdx.id);
 
     // cardId = this.getAttribute('data-id');
     // playerChoices.push(cardArray[cardId]);

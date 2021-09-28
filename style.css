@@ -29,7 +29,7 @@ h1.title{
     margin: auto;
 }
 
-.cardgrid {
+.grid {
     display: flex;
     flex-wrap: wrap;
     height: auto;
@@ -51,6 +51,7 @@ section > div{
     width: 100px;
     height: 100px;
     border: 1px solid green;
+    z-index: 0;
 }
 
 .back {
@@ -58,6 +59,7 @@ section > div{
     width: 100px;
     height: 100px;
     border: 1px solid red;
+    z-index: 1;
 }
 
 div.button{

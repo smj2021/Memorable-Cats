@@ -23,6 +23,7 @@ let cardArray = [
 //-------VARIABLES(STATE)-------//
 let playerChoices = [];//This is the array for card clicks to be logged.
 let playerChoicesId = [];//
+playerMatches = [];//store matched cards here
 let matchCombos = [
     ['IMG_1.JPG', 'IMG_1.JPG'],
     ['IMG_2.JPG', 'IMG_2.JPG'],
@@ -35,14 +36,13 @@ let matchCombos = [
 ];
 let firstCard;//First card chosen by a player
 let secondCard;//Second card chosen by a player
-let cardId;
 
 //-------CACHED ELEMENT REFERENCES-------//
-const cardGridEl = document.querySelectorAll('.cardgrid');//grabs the div container that will hold the cards
-const cardGridSectionEl = document.querySelector('#cardgrid');
+const cardGridEl = document.querySelectorAll('.grid');//grabs the section container that will hold the cards
+const cardGridSectionEl = document.querySelector('#cardgrid');//grabs the container holding the cards
 const messageEl = document.getElementById('message');
-const cardEl = document.querySelectorAll('.cards');
-const resetBtn = document.querySelector('#reset-button');
+//const cardsEl = document.querySelectorAll('.cards');//grabs all divs for each card
+const resetBtn = document.querySelector('#reset-button');//grabs the reset button
 const timerEl = document.getElementById('timer');
 //-------EVENT LISTENERS-------//
 cardGridSectionEl.addEventListener('click', handleClick);
@@ -58,6 +58,7 @@ init();
 function init() {
     playerChoices = [];
     playerChoicesIdx = [];
+    let matches = document.querySelectorAll('img');
     matchedCards = [];//matched pairs of cards will be stored here after first and second click are made.
     resetBtn.setAttribute('hidden', init);
     messageEl.innerText = 'Player, pick a card to start the clock!';
@@ -78,15 +79,17 @@ function createAndAppendCardEls(idValue, imgNum) {
     let frontImage = document.createElement('img');
     frontImage.setAttribute('src', `images/IMG_${imgNum}.JPG`);
     frontImage.setAttribute('class', 'front');
-
     let backImage = document.createElement('img');
     backImage.setAttribute('src', 'images/Sheep.png');
     backImage.setAttribute('class', 'back');
     div.appendChild(frontImage);
     div.appendChild(backImage);
     cardGridSectionEl.appendChild(div);
+    //for (i=1; i <= 16; i++ ){
+    // }
     // console.log(cardGridSectionEl);
 }
+
 
 function createBoard() {
     let counter = 0;//counter starts at 1 and every even loop increments.
@@ -95,26 +98,33 @@ function createBoard() {
         if (i % 2 === 0) counter++;
         createAndAppendCardEls(i, counter);
     }
-    // console.log('hi');
 }
 
-function handleClick(event) { //reveal card underneath on click
-    cardId = event.getAttribute('data-id');
-    playerChoices.push(cardArray[cardId]);
-    playerChoicesId.push(cardId);
-    this.setAttribute('src', cardArray[cardId].name);
-    if (playerChoices.length === 2) {
-        cardMatchCheck();
-    }
-    console.log(playerChoices);
+function handleClick(e) { //reveal card underneath on click
+    const clickEl = e.target;
+    console.log(e);
+    const clickedElIdx = clickEl.id;
+    console.log(clickedElIdx.id);
+
+    // cardId = this.getAttribute('data-id');
+    // playerChoices.push(cardArray[cardId]);
+    // playerChoicesId.push(cardId);
+    // this.setAttribute('src', cardArray[cardId]);
+    // if (playerChoices.length === 2) {
+    //     cardMatchCheck();
+    // } else {
+    //     return;
+    // }
+    // console.log(playerChoices.length);
 
 }
 
 function cardMatchCheck() {
-    firstCard = [];
-    secondCard = [];
-    if (firstCard[i] === secondCard[i]) {
-        
+    firstCard = playerChoicesId[0];
+    secondCard = playerChoicesId[1];
+    if (playerChoices[0] = playerChoices[1]) {
+        messageEl.innerText = 'Congratulations, Player! You found a match!';
+
     }
 }
 
@@ -122,16 +132,7 @@ function cardMatchCheck() {
 // 
 
 
-// function flipCard(event) {//flip cards on click
-//     console.log(event);
-//     let cardIden = event.target.getAttribute('id');
-//     playerChoices.push(cardArray[cardIden].name);
-//     playerChoicesIden.push(cardIden);
-//     this.setAttribute('src', cardArray[cardIden].img);
-//     if (playerChoices.length === 2) {
-//         setTimeout(matchCards, 1000);
-//     }
-// }
+
 
 // function matchCards() {
 //     let cardsEl = document.querySelectorAll('img');

@@ -24,16 +24,16 @@ let cardArray = [
 let playerChoices = [];//This is the array for card clicks to be logged.
 let playerChoicesId;//
 let playerMatches = [];//store matched cards here
-// let matchCombos = [
-//     ['IMG_1.JPG', 'IMG_1.JPG'],
-//     ['IMG_2.JPG', 'IMG_2.JPG'],
-//     ['IMG_3.JPG', 'IMG_3.JPG'],
-//     ['IMG_4.JPG', 'IMG_4.JPG'],
-//     ['IMG_5.JPG', 'IMG_5.JPG'],
-//     ['IMG_6.JPG', 'IMG_6.JPG'],
-//     ['IMG_7.JPG', 'IMG_7.JPG'],
-//     ['IMG_8.JPG', 'IMG_8.JPG']
-// ];
+let matchCombos = [
+    ['IMG_1.JPG', 'IMG_1.JPG'],
+    ['IMG_2.JPG', 'IMG_2.JPG'],
+    ['IMG_3.JPG', 'IMG_3.JPG'],
+    ['IMG_4.JPG', 'IMG_4.JPG'],
+    ['IMG_5.JPG', 'IMG_5.JPG'],
+    ['IMG_6.JPG', 'IMG_6.JPG'],
+    ['IMG_7.JPG', 'IMG_7.JPG'],
+    ['IMG_8.JPG', 'IMG_8.JPG']
+];
 let firstCard;//First card chosen by a player
 let secondCard;//Second card chosen by a player
 
@@ -53,10 +53,7 @@ const timerEl = document.querySelector('#timer');
 //-------EVENT LISTENERS-------//
 cardGridSectionEl.addEventListener('click', handleClick);
 resetBtn.addEventListener('click', init);
-// cardsEl.addEventListener('click', startGame);
-// cardsNodeList.forEach(function(card){
-//     card.addEventListener('click', handleClick);
-// });
+
 
 
 
@@ -114,20 +111,41 @@ function handleClick(e) {
     }
 }
 
+
 function cardMatchCheck() {
+
     firstCard = playerChoices[0];
     secondCard = playerChoices[1];
     if (playerChoices[0] === playerChoices[1]) {
         messageEl.innerText = 'Congratulations, Player! You found a match!';
+        playerMatches.push(playerChoices);
+        console.log(playerMatches);
+        cardGridSectionEl.removeEventListener('click', handleClick);
+        checkWin();
+    } else {
+        playerChoices = [];
 
     }
 }
 
+function checkWin() {
+    if (playerMatches.length === 8) {
+        alert(`Congratulations Player, you win!`);
+    }
+}
 
 
-
-
-
+// function cardShuffle(arr) {
+//     let length = arr.length;
+//     const tempArray = [];
+//     for(let i = 0; i < length; i++){
+//         let idx = Math.floor(Math.random() * arr.length);
+//         let value = arr.splice(idx, 1);
+//         tempArray.push(value);
+//     }
+//     return tempArray;
+// }
+// console.log(cardShuffle([1,2,3,4,5]));
 
 // function matchCards() {
 //     let cardsEl = document.querySelectorAll('img');

@@ -36,7 +36,6 @@ let matchCombos = [
 ];
 let firstCard;//First card chosen by a player
 let secondCard;//Second card chosen by a player
-
 // const elementZero = document.querySelector('#0');
 // console.log(elementZero);
 
@@ -59,6 +58,7 @@ resetBtn.addEventListener('click', init);
 
 //-------FUNCTI0NS-------//
 init();
+createBoard();
 
 function init() {
     playerChoices = [];
@@ -68,7 +68,9 @@ function init() {
     resetBtn.setAttribute('hidden', init);
     messageEl.innerText = 'Player, pick a card to start the clock!';
     // render();
-    createBoard();
+    // cardsNodeList.setAttribute.classList.remove('active');
+    console.log(cardsNodeList);
+
 }
 
 
@@ -100,38 +102,55 @@ function createBoard() {
     }
 }
 
+//This function responds to the player clicking a card and executes cardMatchCheck() if the playerChoices array holds two values.
 function handleClick(e) {
-    clickedEl = e.target.parentNode.classList['name'];
-    console.log(clickedEl);
     e.target.parentNode.classList.add('active');
+    console.log(e.target.parentNode.classList);
+    //let clickedEl = e.target.parentNode.classList['name'];
+    //console.log(clickedEl); //why is this undefined?
     playerChoices.push(e.target.parentNode.firstChild['name']);
     console.log(playerChoices);
     if (playerChoices.length === 2) {
         cardMatchCheck();
     }
+
 }
 
 
+
+//This function checks to see if index 1 and index 2 in the playerChoices array are the same card based on a card name string stored in playerChoices on click.
 function cardMatchCheck() {
 
     firstCard = playerChoices[0];
     secondCard = playerChoices[1];
     if (playerChoices[0] === playerChoices[1]) {
         messageEl.innerText = 'Congratulations, Player! You found a match!';
+
         playerMatches.push(playerChoices);
         console.log(playerMatches);
-        cardGridSectionEl.removeEventListener('click', handleClick);
-        checkWin();
-    } else {
-        playerChoices = [];
+        playerChoices.length = 0;
+        console.log(playerChoices);
 
     }
+    else {
+        messageEl.innerText = 'That wasn\'t a match. Pick again!'
+        playerChoices.length = 0;
+    }
+
+    // cardGridSectionEl.removeEventListener('click', handleClick);
+    checkWin();
+
+
 }
+
 
 function checkWin() {
     if (playerMatches.length === 8) {
-        alert(`Congratulations Player, you win!`);
+        setTimeout(1000)
+        messageEl.innerText = `Congratulations Player, you win!`;
+        resetBtn.removeAttribute('hidden');
     }
+    return;
 }
 
 

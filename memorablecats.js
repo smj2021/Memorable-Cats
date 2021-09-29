@@ -22,36 +22,41 @@ let cardArray = [
 
 //-------VARIABLES(STATE)-------//
 let playerChoices = [];//This is the array for card clicks to be logged.
-let playerChoicesId = [];//
-playerMatches = [];//store matched cards here
-let matchCombos = [
-    ['IMG_1.JPG', 'IMG_1.JPG'],
-    ['IMG_2.JPG', 'IMG_2.JPG'],
-    ['IMG_3.JPG', 'IMG_3.JPG'],
-    ['IMG_4.JPG', 'IMG_4.JPG'],
-    ['IMG_5.JPG', 'IMG_5.JPG'],
-    ['IMG_6.JPG', 'IMG_6.JPG'],
-    ['IMG_7.JPG', 'IMG_7.JPG'],
-    ['IMG_8.JPG', 'IMG_8.JPG']
-];
+let playerChoicesId;//
+let playerMatches = [];//store matched cards here
+// let matchCombos = [
+//     ['IMG_1.JPG', 'IMG_1.JPG'],
+//     ['IMG_2.JPG', 'IMG_2.JPG'],
+//     ['IMG_3.JPG', 'IMG_3.JPG'],
+//     ['IMG_4.JPG', 'IMG_4.JPG'],
+//     ['IMG_5.JPG', 'IMG_5.JPG'],
+//     ['IMG_6.JPG', 'IMG_6.JPG'],
+//     ['IMG_7.JPG', 'IMG_7.JPG'],
+//     ['IMG_8.JPG', 'IMG_8.JPG']
+// ];
 let firstCard;//First card chosen by a player
 let secondCard;//Second card chosen by a player
+
+// const elementZero = document.querySelector('#0');
+// console.log(elementZero);
 
 //-------CACHED ELEMENT REFERENCES-------//
 const cardGridEl = document.querySelectorAll('.grid');//grabs the section container that will hold the cards
 const cardGridSectionEl = document.querySelector('#cardgrid');
 //grabs the container holding the cards
-const messageEl = document.getElementById('message');
-const cardsEl = document.querySelectorAll('.cards');//grabs all divs for each card
+const messageEl = document.querySelector('#message');
+const cardsNodeList = document.querySelectorAll('.cards');//grabs all divs for each card
 const resetBtn = document.querySelector('#reset-button');//grabs the reset button
-const timerEl = document.getElementById('timer');
+const timerEl = document.querySelector('#timer');
 
 
 //-------EVENT LISTENERS-------//
 cardGridSectionEl.addEventListener('click', handleClick);
 resetBtn.addEventListener('click', init);
 // cardsEl.addEventListener('click', startGame);
-
+// cardsNodeList.forEach(function(card){
+//     card.addEventListener('click', handleClick);
+// });
 
 
 
@@ -61,18 +66,14 @@ init();
 function init() {
     playerChoices = [];
     playerChoicesIdx = [];
-    let matches = document.querySelectorAll('img');
-    matchedCards = [];//matched pairs of cards will be stored here after first and second click are made.
+    // let matches = document.querySelectorAll('img');
+    playerMatches = [];//matched pairs of cards will be stored here after first and second click are made.
     resetBtn.setAttribute('hidden', init);
     messageEl.innerText = 'Player, pick a card to start the clock!';
     // render();
     createBoard();
 }
 
-//function startGame(){
-// firstChoice = null;
-// secondChoice = null;
-// }
 
 function createAndAppendCardEls(idValue, imgNum) {
     let div = document.createElement('div');
@@ -102,50 +103,28 @@ function createBoard() {
     }
 }
 
-function handleClick(e) { 
-    // console.log(e.target.parentNode);
+function handleClick(e) {
+    clickedEl = e.target.parentNode.classList['name'];
+    console.log(clickedEl);
     e.target.parentNode.classList.add('active');
-    playerChoices = [];
     playerChoices.push(e.target.parentNode.firstChild['name']);
     console.log(playerChoices);
-    // firstCard = e.target.parentNode;
-    // playerChoices.push(firstCard.id);
-    // console.log(firstCard);
-    // if (playerChoices.length = 2){
-    //     cardMatchCheck();
-    // }
-    // // console.log(playerChoices);
-    // if ()
-    // secondCard = e.target.parentNode;
-    // playerChoices.push(secondCard.id);
-    // console.log(playerChoices);
-    // if (){}//counter to turn off eventlistener
-    
-
-    // cardId = this.getAttribute('data-id');
-    // playerChoices.push(cardArray[cardId]);
-    // playerChoicesId.push(cardId);
-    // this.setAttribute('src', cardArray[cardId]);
-    // if (playerChoices.length === 2) {
-    //     cardMatchCheck();
-    // } else {
-    //     return;
-    // }
-    // console.log(playerChoices.length);
-
+    if (playerChoices.length === 2) {
+        cardMatchCheck();
+    }
 }
 
 function cardMatchCheck() {
-    firstCard = playerChoicesId[0];
-    secondCard = playerChoicesId[1];
-    if (playerChoices[0] = playerChoices[1]) {
+    firstCard = playerChoices[0];
+    secondCard = playerChoices[1];
+    if (playerChoices[0] === playerChoices[1]) {
         messageEl.innerText = 'Congratulations, Player! You found a match!';
 
     }
 }
 
 
-// 
+
 
 
 

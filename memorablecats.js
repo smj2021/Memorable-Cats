@@ -83,6 +83,14 @@ function createBoard() {
     }
 }
 
+function reShuffleBoard(){
+    counter = 0;
+    for(i=0; i< tempArray.length; i++){
+        if (i % 2 === 0) counter++;
+        createAndAppendCardEls(i, counter);
+    }
+}
+
 // Generates the cards on the board.
 function createAndAppendCardEls(idValue, imgNum) {
     let div = document.createElement('div');
@@ -147,12 +155,14 @@ function reload() {
 
 
 function cardShuffle(arr) {
+    tempArray = [];
     let length = cardArray.length;
     // const tempArray = [];
     for (let i = 0; i < length; i++) {
         let idx = Math.floor(Math.random() * cardArray.length);
-        let value = cardArray.splice(idx, 1);
-        tempArray.push(value);
+        console.log(cardArray[idx], idx);
+        // let value = cardArray.splice(idx, 1);
+        tempArray.push(cardArray[idx]);
     }
     return tempArray;
 }

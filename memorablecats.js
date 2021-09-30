@@ -19,7 +19,8 @@ let cardArray = [
     { name: '7', img: 'images/IMG_8.JPG' }
 ];
 
-
+let tempArray = [];
+// console.log(tempArray);
 //-------VARIABLES(STATE)-------//
 let playerChoices = [];//This is the array for card clicks to be logged.
 let playerChoicesId;//
@@ -89,7 +90,6 @@ function createAndAppendCardEls(idValue, imgNum) {
     div.setAttribute('class', 'cards');
     div.setAttribute('name', `cat_${imgNum}`);
     let frontImage = document.createElement('img');
-    // frontImage = Math.random("img");
     frontImage.setAttribute('src', `images/IMG_${imgNum}.JPG`);
     frontImage.setAttribute('class', 'front');
     frontImage.setAttribute('name', `cat_${imgNum}`);
@@ -108,7 +108,7 @@ function handleClick(e) {
     if (playerChoices.length === 2) {
         cardMatchCheck();
     } else {
-        // How can I turn the cards back over   
+        // How can I turn the cards back over?  
     }
 }
 
@@ -146,17 +146,16 @@ function reload() {
 }
 
 
-// function cardShuffle(arr) {
-//     let length = arr.length;
-//     const tempArray = [];
-//     for(let i = 0; i < length; i++){
-//         let idx = Math.floor(Math.random() * arr.length);
-//         let value = arr.splice(idx, 1);
-//         tempArray.push(value);
-//     }
-//     return tempArray;
-// }
-// console.log(cardShuffle([1,2,3,4,5]));
+function cardShuffle(arr) {
+    let length = cardArray.length;
+    // const tempArray = [];
+    for (let i = 0; i < length; i++) {
+        let idx = Math.floor(Math.random() * cardArray.length);
+        let value = cardArray.splice(idx, 1);
+        tempArray.push(value);
+    }
+    return tempArray;
+}
 
 // function matchCards() {
 //     let cardsEl = document.querySelectorAll('img');

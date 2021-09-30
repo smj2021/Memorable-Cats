@@ -12,7 +12,6 @@ h1.title{
     text-align:center;
     color:chartreuse;
     padding: 0em;
-    
 }
 
 #message {
@@ -25,8 +24,7 @@ h1.title{
 
 #timer{
     text-align: center;
-    font-size: 2em;
-    margin: auto;
+    font-size: 24px;
 }
 
 .grid {
@@ -73,6 +71,13 @@ div.button{
     height: 25px;
     margin: 25px;
     text-align: center;
+}
+
+#reset-button {
+width: auto;
+height: 30px;
+border-radius: 10px;
+background-color:magenta
 }
 
 .grid .cards.active {

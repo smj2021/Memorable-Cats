@@ -116,7 +116,7 @@ function handleClick(e) {
     if (playerChoices.length === 2) {
         cardMatchCheck();
     } else {
-        // How can I turn the cards back over?  
+    // How can I turn the cards back over?  
     }
 }
 

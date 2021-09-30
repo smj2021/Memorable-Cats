@@ -69,7 +69,7 @@ function init() {
     messageEl.innerText = 'Player, pick a card to start the clock!';
     // render();
     // cardsNodeList.setAttribute.classList.remove('active');
-    console.log(cardsNodeList);
+
 
 }
 
@@ -80,6 +80,7 @@ function createAndAppendCardEls(idValue, imgNum) {
     div.setAttribute('class', 'cards');
     div.setAttribute('name', `cat_${imgNum}`);
     let frontImage = document.createElement('img');
+    // frontImage = Math.random("img");
     frontImage.setAttribute('src', `images/IMG_${imgNum}.JPG`);
     frontImage.setAttribute('class', 'front');
     frontImage.setAttribute('name', `cat_${imgNum}`);
@@ -135,12 +136,11 @@ function cardMatchCheck() {
     else {
         messageEl.innerText = 'That wasn\'t a match. Pick again!'
         playerChoices.length = 0;
+        playerChoices.classList.removeAttribute('active');
     }
 
     // cardGridSectionEl.removeEventListener('click', handleClick);
     checkWin();
-
-
 }
 
 
@@ -151,6 +151,10 @@ function checkWin() {
         resetBtn.removeAttribute('hidden');
     }
     return;
+}
+
+function reload(){
+    location.reload();
 }
 
 

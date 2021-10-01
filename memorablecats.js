@@ -23,7 +23,6 @@ let tempArray = [];
 // console.log(tempArray);
 //-------VARIABLES(STATE)-------//
 let playerChoices = [];//This is the array for card clicks to be logged.
-let playerChoicesId;//
 let playerMatches = [];//store matched cards here
 let matchCombos = [
     ['IMG_1.JPG', 'IMG_1.JPG'],
@@ -59,7 +58,7 @@ const timerEl = document.querySelector('#timer');
 //-------EVENT LISTENERS-------//
 cardGridSectionEl.addEventListener('click', handleClick);
 resetBtn.addEventListener('click', init);
-
+// timerEl.addEventListener('onclick', startTimer);
 
 
 
@@ -118,18 +117,19 @@ function handleClick(e) {
         console.log(cardMatchCheck());
         cardMatchCheck(e) === false ? e.target.parentNode.classList.remove('active') : null;
     }
-    // How can I turn the cards back over? 
     startTimer();
-    render();
+    // How can I turn the cards back over? 
 }
+
 
 //Timer that starts ticking on click.
 function startTimer() {
-    // if (setIntervalId) {//if we have an interval running, reset to zero and start a new one.
-    //     seconds = 0;
-    //     clearInterval(setIntervalId);//stops timer
-    // }
-    setIntervalId = setInterval(tick, 1000);//calling tick function gets timer to count up
+    if (!setIntervalId) {
+        setIntervalId = setInterval(tick, 1000);
+    } else {
+        return;
+    }
+    //calling tick function gets timer to count up
 }
 
 function tick() {

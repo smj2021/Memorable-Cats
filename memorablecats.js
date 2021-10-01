@@ -18,7 +18,7 @@ let cardArray = [
     { name: '7', img: 'images/IMG_8.JPG' },
     { name: '7', img: 'images/IMG_8.JPG' }
 ];
-
+// This will enable randomization of card placement.
 let tempArray = [];
 // console.log(tempArray);
 //-------VARIABLES(STATE)-------//
@@ -59,7 +59,6 @@ createBoard();
 function init() {
     playerChoices = [];
     playerMatches = [];//matched pairs of cards will be stored here after first and second click are made.
-    resetBtn.setAttribute('hidden', init);
     messageEl.innerText = 'Player, pick a card to start the clock!';
 }
 
@@ -98,22 +97,20 @@ function createAndAppendCardEls(idValue, imgNum) {
     cardGridSectionEl.appendChild(div);
 }
 
-//This function responds to the player clicking a card and executes cardMatchCheck() if the playerChoices array holds two values.
+//This function responds to the player clicking a card and executes cardMatchCheck() if the playerChoices array holds two indices.
 function handleClick(e) {
     e.target.parentNode.classList.add('active');
     playerChoices.push(e.target.parentNode.firstChild['name']);
     if (playerChoices.length === 2) {
         console.log(playerChoices);
         cardMatchCheck();
-        cardMatchCheck(element) === false ? e.target.parentNode.removeAttribute('class', 'active') : null;
-        console.log(cardMatchCheck(element));
     }
     startTimer();
 
 }
 
 
-//Timer that starts ticking on click.
+//Timer that starts ticking on click, and ignores subsequent clicks if setIntervalId is defined.
 function startTimer() {
     if (!setIntervalId) {
         setIntervalId = setInterval(tick, 1000);
@@ -148,7 +145,7 @@ function cardMatchCheck() {
         messageEl.innerText = 'Congratulations, Player! You found a match! Pick again!';
         playerMatches.push(playerChoices);
         playerChoices.length = 0;
-     } else {
+    } else {
         messageEl.innerText = 'That wasn\'t a match. Pick again!'
         playerChoices.length = 0;
     }
@@ -159,7 +156,6 @@ function cardMatchCheck() {
 function checkWin() {
     if (playerMatches.length === 8) {
         messageEl.innerText = `Congratulations Player, you won in ${timerEl.innerText} seconds !`;
-        resetBtn.removeAttribute('hidden');
     }
     return;
 }

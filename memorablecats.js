@@ -115,10 +115,11 @@ function handleClick(e) {
     if (playerChoices.length === 2) {
         console.log(playerChoices);
         cardMatchCheck();
-        // cardMatchCheck(e) === false ? e.target.parentNode.classList.remove('active') : null;
+        cardMatchCheck(element) === false ? e.target.parentNode.removeAttribute('class', 'active') : null;
+        console.log(cardMatchCheck(element));
     }
     startTimer();
-    // How can I turn the cards back over? 
+
 }
 
 
@@ -153,46 +154,18 @@ function render() {
 function cardMatchCheck() {
     firstCard = playerChoices[0];
     secondCard = playerChoices[1];
-    // if (playerChoices.length === 2) {
     if (playerChoices[0] === playerChoices[1]) {
         messageEl.innerText = 'Congratulations, Player! You found a match! Pick again!';
         playerMatches.push(playerChoices);
-        console.log(playerMatches);
         playerChoices.length = 0;
-        console.log(playerChoices.length);
-        // checkWin();
-        // return true;
-        // cardGridSectionEl
-        //     .querySelectorAll('div')
-        //     .forEach(function (div) {
-        //         if (div.classList.contains('active') && div.classList.contains('matched')) {
-        //         } else if (div.classList.contains('active')) {
-        //             setTimeout(function () {
-        //                 div.classList.remove('active')
-
-        //             }, 3000)
-        //         };
-        //     })
-    }
-    // if (playerChoices[0] === playerChoices[1]) {
-
-    //     messageEl.innerText = 'Congratulations, Player! You found a match! Pick again!';
-    //     playerMatches.push(playerChoices);
-    //     console.log(playerMatches);
-    //     playerChoices.length = 0;
-    //     checkWin();
-    //     return true;
-    // }
-    else {
+     } else {
         messageEl.innerText = 'That wasn\'t a match. Pick again!'
         playerChoices.length = 0;
-        // return;
-        // return false;
     }
     checkWin();
 }
 
-
+//Checks the length of the playerMatches array for the number of possible matches and if true ends the game and returns a win message
 function checkWin() {
     if (playerMatches.length === 8) {
         messageEl.innerText = `Congratulations Player, you win!`;
@@ -210,28 +183,10 @@ function reload() {
 function cardShuffle(arr) {
     tempArray = [];
     let length = cardArray.length;
-    // const tempArray = [];
     for (let i = 0; i < length; i++) {
         let idx = Math.floor(Math.random() * cardArray.length);
         console.log(cardArray[idx], idx);
-        // let value = cardArray.splice(idx, 1);
         tempArray.push(cardArray[idx]);
     }
     return tempArray;
 }
-
-// function matchCards() {
-//     let cardsEl = document.querySelectorAll('img');
-//     const firstCard = playerChoicesIden[0];
-//     const secondCard = playerChoicesIden[1];
-//     if (playerChoicesIden[0] === playerChoicesIden[1]) {
-//         messageEl.innerText = 'Awesome! You got a match!';
-//         cardsEl[playerChoicesIden].setAttribute('src', 'images/white.JPEG');//replaces card when matched
-//         cardsEl[playerChoicesIden].setAttribute('src', 'images/white.JPEG');//replaces card when matched
-//         matchedCards.push(playerChoices);
-//     } else {
-//         messageEl.innerText = 'No match! Try again!';
-//         cardsEl[firstCard].setAttribute('src', 'images/blank.JPEG');
-//         cardsEl[secondCard].setAttribute('src', 'images/blank.JPEG');
-//     }
-// }

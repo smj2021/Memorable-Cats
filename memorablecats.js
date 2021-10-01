@@ -36,7 +36,8 @@ let matchCombos = [
     ['IMG_8.JPG', 'IMG_8.JPG']
 ];
 
-
+//Timer variables declared.
+let setIntervalId, min, sec, seconds = 0;
 //First card chosen by a player
 let firstCard;
 //Second card chosen by a player
@@ -116,8 +117,33 @@ function handleClick(e) {
     if (playerChoices.length === 2) {
         console.log(cardMatchCheck());
         cardMatchCheck(e) === false ? e.target.parentNode.classList.remove('active') : null;
+    }
+    // How can I turn the cards back over? 
+    startTimer();
+    render();
+}
+
+//Timer that starts ticking on click.
+function startTimer() {
+    // if (setIntervalId) {//if we have an interval running, reset to zero and start a new one.
+    //     seconds = 0;
+    //     clearInterval(setIntervalId);//stops timer
+    // }
+    setIntervalId = setInterval(tick, 1000);//calling tick function gets timer to count up
+}
+
+function tick() {
+    seconds++;//incrementing seconds
+    render();//every time the clock ticks the function renders.
+}
+
+function render() {
+    min = Math.floor(seconds / 60);
+    sec = seconds % 60;
+    if (sec < 10) {
+        timerEl.innerText = `${min}:0${sec}`;
     } else {
-        // How can I turn the cards back over?  
+        timerEl.innerText = `${min}:${sec}`;
     }
 }
 
@@ -141,7 +167,7 @@ function cardMatchCheck(element) {
             })
     }
     if (playerChoices[0] === playerChoices[1]) {
-        
+
         messageEl.innerText = 'Congratulations, Player! You found a match!';
         playerMatches.push(playerChoices);
         playerChoices.length = 0;

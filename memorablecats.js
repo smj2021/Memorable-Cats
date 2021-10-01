@@ -51,14 +51,14 @@ const messageEl = document.querySelector('#message');
 // const cardsList = document.querySelectorAll('.cards');
 //Grabs the reset button
 const resetBtn = document.querySelector('#reset-button');
-//Yet unimplemented tiner for tracking solution speed.
+//Timer for tracking solution speed.
 const timerEl = document.querySelector('#timer');
 
 
 //-------EVENT LISTENERS-------//
 cardGridSectionEl.addEventListener('click', handleClick);
 resetBtn.addEventListener('click', init);
-// timerEl.addEventListener('onclick', startTimer);
+
 
 
 
@@ -68,7 +68,6 @@ createBoard();
 
 function init() {
     playerChoices = [];
-    playerChoicesIdx = [];
     playerMatches = [];//matched pairs of cards will be stored here after first and second click are made.
     resetBtn.setAttribute('hidden', init);
     messageEl.innerText = 'Player, pick a card to start the clock!';
@@ -114,8 +113,9 @@ function handleClick(e) {
     e.target.parentNode.classList.add('active');
     playerChoices.push(e.target.parentNode.firstChild['name']);
     if (playerChoices.length === 2) {
-        console.log(cardMatchCheck());
-        cardMatchCheck(e) === false ? e.target.parentNode.classList.remove('active') : null;
+        console.log(playerChoices);
+        cardMatchCheck();
+        // cardMatchCheck(e) === false ? e.target.parentNode.classList.remove('active') : null;
     }
     startTimer();
     // How can I turn the cards back over? 
@@ -150,37 +150,46 @@ function render() {
 
 
 //This function checks to see if index 1 and index 2 in the playerChoices array are the same card based on a card name string stored in playerChoices on click.
-function cardMatchCheck(element) {
+function cardMatchCheck() {
     firstCard = playerChoices[0];
     secondCard = playerChoices[1];
-    if (playerChoices.length === 2) {
-        cardGridSectionEl
-            .querySelectorAll('div')
-            .forEach(function (div) {
-                if (div.classList.contains('active') && div.classList.contains('matched')) {
-                } else if (div.classList.contains('active')) {
-                    setTimeout(function () {
-                        div.classList.remove('active')
-
-                    }, 3000)
-                };
-            })
-    }
+    // if (playerChoices.length === 2) {
     if (playerChoices[0] === playerChoices[1]) {
-
-        messageEl.innerText = 'Congratulations, Player! You found a match!';
+        messageEl.innerText = 'Congratulations, Player! You found a match! Pick again!';
         playerMatches.push(playerChoices);
+        console.log(playerMatches);
         playerChoices.length = 0;
-        checkWin();
-        return true;
+        console.log(playerChoices.length);
+        // checkWin();
+        // return true;
+        // cardGridSectionEl
+        //     .querySelectorAll('div')
+        //     .forEach(function (div) {
+        //         if (div.classList.contains('active') && div.classList.contains('matched')) {
+        //         } else if (div.classList.contains('active')) {
+        //             setTimeout(function () {
+        //                 div.classList.remove('active')
+
+        //             }, 3000)
+        //         };
+        //     })
     }
+    // if (playerChoices[0] === playerChoices[1]) {
+
+    //     messageEl.innerText = 'Congratulations, Player! You found a match! Pick again!';
+    //     playerMatches.push(playerChoices);
+    //     console.log(playerMatches);
+    //     playerChoices.length = 0;
+    //     checkWin();
+    //     return true;
+    // }
     else {
         messageEl.innerText = 'That wasn\'t a match. Pick again!'
-
         playerChoices.length = 0;
-        return false;
+        // return;
+        // return false;
     }
-
+    checkWin();
 }
 
 

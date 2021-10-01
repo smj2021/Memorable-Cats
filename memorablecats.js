@@ -24,16 +24,6 @@ let tempArray = [];
 //-------VARIABLES(STATE)-------//
 let playerChoices = [];//This is the array for card clicks to be logged.
 let playerMatches = [];//store matched cards here
-let matchCombos = [
-    ['IMG_1.JPG', 'IMG_1.JPG'],
-    ['IMG_2.JPG', 'IMG_2.JPG'],
-    ['IMG_3.JPG', 'IMG_3.JPG'],
-    ['IMG_4.JPG', 'IMG_4.JPG'],
-    ['IMG_5.JPG', 'IMG_5.JPG'],
-    ['IMG_6.JPG', 'IMG_6.JPG'],
-    ['IMG_7.JPG', 'IMG_7.JPG'],
-    ['IMG_8.JPG', 'IMG_8.JPG']
-];
 
 //Timer variables declared.
 let setIntervalId, min, sec, seconds = 0;
@@ -82,13 +72,13 @@ function createBoard() {
     }
 }
 
-function reShuffleBoard() {
-    counter = 0;
-    for (i = 0; i < tempArray.length; i++) {
-        if (i % 2 === 0) counter++;
-        createAndAppendCardEls(i, counter);
-    }
-}
+// function reShuffleBoard() {
+//     counter = 0;
+//     for (i = 0; i < tempArray.length; i++) {
+//         if (i % 2 === 0) counter++;
+//         createAndAppendCardEls(i, counter);
+//     }
+// }
 
 // Generates the cards on the board.
 function createAndAppendCardEls(idValue, imgNum) {
@@ -168,7 +158,7 @@ function cardMatchCheck() {
 //Checks the length of the playerMatches array for the number of possible matches and if true ends the game and returns a win message
 function checkWin() {
     if (playerMatches.length === 8) {
-        messageEl.innerText = `Congratulations Player, you win!`;
+        messageEl.innerText = `Congratulations Player, you won in ${timerEl.innerText} seconds !`;
         resetBtn.removeAttribute('hidden');
     }
     return;
@@ -180,13 +170,13 @@ function reload() {
 }
 
 
-function cardShuffle(arr) {
-    tempArray = [];
-    let length = cardArray.length;
-    for (let i = 0; i < length; i++) {
-        let idx = Math.floor(Math.random() * cardArray.length);
-        console.log(cardArray[idx], idx);
-        tempArray.push(cardArray[idx]);
-    }
-    return tempArray;
-}
+// function cardShuffle(arr) {
+//     tempArray = [];
+//     let length = cardArray.length;
+//     for (let i = 0; i < length; i++) {
+//         let idx = Math.floor(Math.random() * cardArray.length);
+//         console.log(cardArray[idx], idx);
+//         tempArray.push(cardArray[idx]);
+//     }
+//     return tempArray;
+// }

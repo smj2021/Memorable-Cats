@@ -12,8 +12,6 @@ Stack Used: HTML, CSS, JavaScript
 
 Next Steps: In the future, I would like to include a move counter to capture how many clicks were made before the player matched all the cards.
 
-I am still on the fence about a timer, but think it would be appropriate to encourage fast clicking, and player improvement over time.
-
 Beyond that, I would like to add a counter to track how many iterations of the game are played in a single sitting and output statistics about player activity (time between clicks, time between matches, fastest win, slowest win).
 
 Another addition I would maybe like to make is a heatmap output to show players which area of the board they tend to favor at the beginning of a game, which may help adjust click strategy.

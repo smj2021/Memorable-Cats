@@ -83,9 +83,9 @@ function createBoard() {
     }
 }
 
-function reShuffleBoard(){
+function reShuffleBoard() {
     counter = 0;
-    for(i=0; i< tempArray.length; i++){
+    for (i = 0; i < tempArray.length; i++) {
         if (i % 2 === 0) counter++;
         createAndAppendCardEls(i, counter);
     }
@@ -114,34 +114,52 @@ function handleClick(e) {
     e.target.parentNode.classList.add('active');
     playerChoices.push(e.target.parentNode.firstChild['name']);
     if (playerChoices.length === 2) {
-        cardMatchCheck();
+        console.log(cardMatchCheck());
+        cardMatchCheck(e) === false ? e.target.parentNode.classList.remove('active') : null;
     } else {
-    // How can I turn the cards back over?  
+        // How can I turn the cards back over?  
     }
 }
 
 
 
 //This function checks to see if index 1 and index 2 in the playerChoices array are the same card based on a card name string stored in playerChoices on click.
-function cardMatchCheck() {
+function cardMatchCheck(element) {
     firstCard = playerChoices[0];
     secondCard = playerChoices[1];
+    if (playerChoices.length === 2) {
+        cardGridSectionEl
+            .querySelectorAll('div')
+            .forEach(function (div) {
+                if (div.classList.contains('active') && div.classList.contains('matched')) {
+                } else if (div.classList.contains('active')) {
+                    setTimeout(function () {
+                        div.classList.remove('active')
+
+                    }, 3000)
+                };
+            })
+    }
     if (playerChoices[0] === playerChoices[1]) {
+        
         messageEl.innerText = 'Congratulations, Player! You found a match!';
         playerMatches.push(playerChoices);
         playerChoices.length = 0;
+        checkWin();
+        return true;
     }
     else {
         messageEl.innerText = 'That wasn\'t a match. Pick again!'
+
         playerChoices.length = 0;
+        return false;
     }
-    checkWin();
+
 }
 
 
 function checkWin() {
     if (playerMatches.length === 8) {
-        setTimeout(1000)
         messageEl.innerText = `Congratulations Player, you win!`;
         resetBtn.removeAttribute('hidden');
     }

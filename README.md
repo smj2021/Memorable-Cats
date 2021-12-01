@@ -1,4 +1,4 @@
-###Memorable Cats -- A Game of Memories... and Cats
+### Memorable Cats -- A Game of Memories... and Cats
 
 Getting Started: https://smj2021.github.io/Memorable-Cats/
 
